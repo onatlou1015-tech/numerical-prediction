@@ -219,6 +219,36 @@
       border-radius: 30px;
       font-weight: 500;
     }
+    .discuss-box {
+      background: #f0f4fe;
+      border-radius: 1.5rem;
+      padding: 1.2rem 1.8rem;
+      margin: 1.5rem 0 0.5rem 0;
+      border-left: 6px solid #b9873a;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .discuss-box strong {
+      color: #1d4b6e;
+      font-size: 1.1rem;
+    }
+    .discuss-box ul {
+      padding-left: 1.8rem;
+      margin: 0.6rem 0;
+    }
+    .discuss-box li {
+      margin-bottom: 0.3rem;
+    }
+    .badge-discuss {
+      background: #d6a84c;
+      color: #1f2f3f;
+      font-weight: 600;
+      padding: 0.15rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-right: 0.6rem;
+    }
   </style>
 </head>
 <body>
@@ -258,7 +288,7 @@
     </div>
   </div>
 
-  <!-- ACTIVITY 1 : VIEWS & LIKES -->
+  <!-- ========== ACTIVITY 1 ========== -->
   <div class="activity-box">
     <h2>📱 Activity 7.1 <small>views & likes</small></h2>
     <p><strong>You are a music manager.</strong> Use the YouTube data below to predict likes from views.<br>
@@ -285,12 +315,22 @@
       <ul style="padding-left: 1.8rem;">
         <li><strong>1.</strong> Create a scatter plot (x = likes, y = views). Draw a trend line by eye.</li>
         <li><strong>2.</strong> Predict the number of likes when views = 250,000 (that’s 25 in your graph).</li>
-        <li><strong>3.</strong> Discuss with a partner: why do views spike on some days?</li>
+        <li><strong>3.</strong> Write down your prediction: <em>“Approximately ______ thousand likes.”</em></li>
+      </ul>
+    </div>
+
+    <!-- DISCUSSION 1 -->
+    <div class="discuss-box">
+      <strong><span class="badge-discuss">💬 discuss</span> with your class</strong>
+      <ul>
+        <li><strong>Why do you think views and likes spike on some days?</strong> (Consider weekends, promotions, or external events.)</li>
+        <li><strong>Compare your trend line with other pairs.</strong> Did everyone draw the same line? Why or why not?</li>
+        <li><strong>If you were the artist’s manager, how would you use this prediction?</strong> What decisions would it help you make?</li>
       </ul>
     </div>
   </div>
 
-  <!-- ACTIVITY 2 : WILD CATTLE & ZEBRAS -->
+  <!-- ========== ACTIVITY 2 ========== -->
   <div class="activity-box" style="border-left-color: #b9873a;">
     <h2>🦓 Activity 7.2 <small>wild cattle & zebras</small></h2>
     <p><strong>Who predicted better?</strong> Use real data from a national park. Download the full set from <strong>data.programming.in.th</strong> (or use the sample below).</p>
@@ -315,12 +355,21 @@
         <li><strong>1. Manual:</strong> Pick two points, calculate <strong>m</strong> and <strong>c</strong>, write your equation <strong>y = mx + c</strong>.</li>
         <li><strong>2.</strong> Use your equation to predict zebras for each x, then compute the <strong>sum of squared errors</strong>.</li>
         <li><strong>3. Digital:</strong> Open the full dataset in a spreadsheet, add a trend line, display the equation. Compare error with your manual model.</li>
-        <li><strong>4.</strong> Which prediction is more accurate? Why?</li>
+      </ul>
+    </div>
+
+    <!-- DISCUSSION 2 -->
+    <div class="discuss-box">
+      <strong><span class="badge-discuss">💬 discuss</span> with your class</strong>
+      <ul>
+        <li><strong>Which method gave a smaller total error – manual or software?</strong> Why do you think that is?</li>
+        <li><strong>Why does the sum of squared errors matter?</strong> How does it help us choose a better model?</li>
+        <li><strong>If you were a park ranger, how would you use this zebra-cattle relationship?</strong> What decisions could it inform?</li>
       </ul>
     </div>
   </div>
 
-  <!-- ACTIVITY 3 : GOLD PRICE + CONSUMER PRICE (main topic) -->
+  <!-- ========== ACTIVITY 3 (main topic) ========== -->
   <div class="activity-box" style="border-left-color: #d4a02b;">
     <h2>🏅 Activity 7.3 <small>gold & consumer prices</small></h2>
     <p><strong>“Knowledge leads to wealth”</strong> — combine gold price data with Thai consumer goods to find hidden relationships.</p>
@@ -371,8 +420,16 @@
         </li>
       </ol>
     </div>
-    <div style="background: #dce9f7; border-radius: 2rem; padding: 0.8rem 1.5rem; display: inline-block;">
-      💡 <strong>Hint:</strong> Use spreadsheet trendline tool → “Display equation” → predict using <strong>y = mx + c</strong>.
+
+    <!-- DISCUSSION 3 (main) -->
+    <div class="discuss-box">
+      <strong><span class="badge-discuss">💬 discuss</span> with your class</strong>
+      <ul>
+        <li><strong>What patterns did you see in the gold price over time?</strong> Is it increasing, decreasing, or cyclic?</li>
+        <li><strong>How does the consumer price index relate to gold price?</strong> Does gold seem to be a hedge against inflation?</li>
+        <li><strong>Why might “knowledge lead to wealth” when it comes to predicting gold?</strong> How could investors use this information?</li>
+        <li><strong>What are the limits of this prediction?</strong> What factors could make your gold price prediction wrong?</li>
+      </ul>
     </div>
   </div>
 
@@ -392,6 +449,15 @@
         • Check “Display equation” & “Display R²”<br>
         • Instant predictions!</p>
       </div>
+    </div>
+    <!-- extra discussion: error & tools -->
+    <div class="discuss-box" style="margin-top: 1rem;">
+      <strong><span class="badge-discuss">💬 discuss</span> with your class</strong>
+      <ul>
+        <li><strong>When would you prefer a manual calculation over software?</strong> When would software be essential?</li>
+        <li><strong>What does a high error tell you about your model?</strong> Should you always trust the trend line?</li>
+        <li><strong>If your prediction error is large, what could you do to improve it?</strong> (Hint: more data, different type of trend line, etc.)</li>
+      </ul>
     </div>
   </div>
 
