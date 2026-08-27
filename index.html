@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Prediction · Lesson & Activities</title>
+  <!-- Google Font & clean reset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0b1a2b;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px -12px rgba(0,20,40,0.2);
+    }
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0f2b4b, #1b4a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      border-left: 6px solid #2b7be4;
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .subhead {
+      font-size: 1.2rem;
+      color: #2c4a6e;
+      margin-left: 1.8rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      border-bottom: 2px dashed #dce5f0;
+      padding-bottom: 1rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #e7edf8;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1a4b7a;
+      letter-spacing: 0.3px;
+      margin-right: 0.5rem;
+    }
+    .section {
+      margin-top: 2.8rem;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #0b2a47;
+    }
+    .section-title span {
+      background: #1d4d7a;
+      color: white;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.1rem 0.9rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .card {
+      background: #f1f6fc;
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #dde6f0;
+      transition: 0.2s;
+    }
+    .card:hover {
+      background: #eaf1fa;
+      border-color: #b3cce5;
+    }
+    .card h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      color: #103456;
+    }
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #1f3d5a;
+    }
+    .code-block {
+      background: #0d1f30;
+      color: #d6e6ff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 1.2rem;
+      font-family: 'Menlo', 'Monaco', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 1.2rem 0;
+      border-left: 6px solid #3f8eff;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1.5rem 0;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+    .data-table th {
+      background: #1a3d5e;
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+    }
+    .data-table td {
+      background: #f9fcff;
+      padding: 0.7rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e3ebf5;
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    .data-table tr:hover td {
+      background: #eef5fd;
+    }
+    .activity-box {
+      background: #eaf3fe;
+      border-radius: 1.8rem;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      border-left: 8px solid #1d6bc3;
+    }
+    .activity-box h2 {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #103a60;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .activity-box h2 small {
+      font-size: 1rem;
+      font-weight: 500;
+      background: #1f5580;
+      color: white;
+      padding: 0.1rem 1.2rem;
+      border-radius: 40px;
+    }
+    .btn {
+      display: inline-block;
+      background: #1f5a8a;
+      color: white;
+      font-weight: 600;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: none;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+    }
+    .btn:hover {
+      background: #134074;
+      transform: scale(1.02);
+    }
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, #bed6ed, transparent);
+      margin: 2.5rem 0;
+    }
+    .footnote {
+      font-size: 0.9rem;
+      color: #38658b;
+      background: #eaf1fa;
+      padding: 1rem 1.8rem;
+      border-radius: 3rem;
+      display: inline-block;
+    }
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    @media (max-width: 700px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      .container { padding: 1.5rem 1rem; }
+      h1 { font-size: 2.2rem; }
+    }
+    .highlight {
+      background: #dceaff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <h1>📈 Numerical Prediction</h1>
+  <div class="subhead">
+    <span class="badge">Grade 11 · Computational Science</span>
+    <span class="badge">⏱ 4 hours</span>
+    <span class="badge">🧑‍🏫 Activity 7</span>
+    — predict the future with data
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="section-title"><span>🎯</span> What you'll learn</div>
+    <div class="card-grid">
+      <div class="card"><h3>📊 Build models</h3><p>Use scatter plots & trend lines to find patterns in real data.</p></div>
+      <div class="card"><h3>🧮 Linear equations</h3><p>Create <strong>y = mx + c</strong> from data and make numeric predictions.</p></div>
+      <div class="card"><h3>📉 Measure error</h3><p>Calculate prediction errors to know how accurate your model is.</p></div>
+      <div class="card"><h3>💻 Software tools</h3><p>Use spreadsheets to automate trend lines & equations.</p></div>
+    </div>
+  </div>
+
+  <!-- KEY CONCEPTS -->
+  <div class="section">
+    <div class="section-title"><span>🔑</span> Core ideas</div>
+    <div class="grid-2col">
+      <div><strong>Numerical prediction</strong> uses historical data to forecast a number: sales, price, views, etc.<br>
+      <span class="highlight">Scatter plot</span> → <span class="highlight">trend line</span> → <span class="highlight">linear equation</span> → <span class="highlight">prediction</span></div>
+      <div><strong>Error</strong> = actual – predicted. We use <strong>squared error</strong> so that big mistakes stand out.<br>
+      <span class="highlight">Sum of squared errors</span> (SSE) measures overall model accuracy.</div>
+    </div>
+    <div class="code-block">
+      y = m·x + c    &nbsp;|&nbsp;   m = (y₂ – y₁) / (x₂ – x₁)   &nbsp;|&nbsp;   Error² = (y – ŷ)²
+    </div>
+  </div>
+
+  <!-- ACTIVITY 1 : VIEWS & LIKES -->
+  <div class="activity-box">
+    <h2>📱 Activity 7.1 <small>views & likes</small></h2>
+    <p><strong>You are a music manager.</strong> Use the YouTube data below to predict likes from views.<br>
+    <strong>Dataset:</strong> 20 days of views (×10k) and likes (×1k).</p>
+
+    <table class="data-table">
+      <thead><tr><th>Day</th><th>Views (10k)</th><th>Likes (1k)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>2.0</td><td>1.1</td></tr><tr><td>2</td><td>5.3</td><td>1.4</td></tr>
+        <tr><td>3</td><td>5.7</td><td>1.8</td></tr><tr><td>4</td><td>6.1</td><td>1.9</td></tr>
+        <tr><td>5</td><td>8.0</td><td>2.3</td></tr><tr><td>6</td><td>10.3</td><td>3.4</td></tr>
+        <tr><td>7</td><td>13.5</td><td>4.9</td></tr><tr><td>8</td><td>16.8</td><td>5.1</td></tr>
+        <tr><td>9</td><td>17.3</td><td>5.3</td></tr><tr><td>10</td><td>18.1</td><td>5.7</td></tr>
+        <tr><td>11</td><td>18.5</td><td>6.0</td></tr><tr><td>12</td><td>18.9</td><td>6.5</td></tr>
+        <tr><td>13</td><td>19.6</td><td>7.8</td></tr><tr><td>14</td><td>23.4</td><td>9.1</td></tr>
+        <tr><td>15</td><td>27.5</td><td>9.7</td></tr><tr><td>16</td><td>28.7</td><td>10.5</td></tr>
+        <tr><td>17</td><td>29.2</td><td>11.2</td></tr><tr><td>18</td><td>30.3</td><td>11.9</td></tr>
+        <tr><td>19</td><td>31.1</td><td>12.6</td></tr><tr><td>20</td><td>38.2</td><td>15.2</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin: 1.2rem 0;">
+      <p><strong>📝 Tasks:</strong></p>
+      <ul style="padding-left: 1.8rem;">
+        <li><strong>1.</strong> Create a scatter plot (x = likes, y = views). Draw a trend line by eye.</li>
+        <li><strong>2.</strong> Predict the number of likes when views = 250,000 (that’s 25 in your graph).</li>
+        <li><strong>3.</strong> Discuss with a partner: why do views spike on some days?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2 : WILD CATTLE & ZEBRAS -->
+  <div class="activity-box" style="border-left-color: #b9873a;">
+    <h2>🦓 Activity 7.2 <small>wild cattle & zebras</small></h2>
+    <p><strong>Who predicted better?</strong> Use real data from a national park. Download the full set from <strong>data.programming.in.th</strong> (or use the sample below).</p>
+
+    <table class="data-table">
+      <thead><tr><th>Wild cattle (x)</th><th>Zebras (y)</th></tr></thead>
+      <tbody>
+        <tr><td>118</td><td>124</td></tr><tr><td>106</td><td>105</td></tr>
+        <tr><td>79.31</td><td>75.23</td></tr><tr><td>67.45</td><td>78.5</td></tr>
+        <tr><td>57.83</td><td>76.16</td></tr><tr><td>50.66</td><td>51.41</td></tr>
+        <tr><td>76.49</td><td>55.02</td></tr><tr><td>85.11</td><td>83.16</td></tr>
+        <tr><td>58.16</td><td>88.77</td></tr><tr><td>65.12</td><td>108.34</td></tr>
+        <tr><td>81.27</td><td>75.84</td></tr><tr><td>98.07</td><td>116.03</td></tr>
+        <tr><td>80.62</td><td>128.3</td></tr><tr><td>86.34</td><td>118.22</td></tr>
+        <tr><td>94.06</td><td>125.2</td></tr><tr><td>99.15</td><td>130.97</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin: 1.2rem 0;">
+      <p><strong>📝 Tasks:</strong></p>
+      <ul style="padding-left: 1.8rem;">
+        <li><strong>1. Manual:</strong> Pick two points, calculate <strong>m</strong> and <strong>c</strong>, write your equation <strong>y = mx + c</strong>.</li>
+        <li><strong>2.</strong> Use your equation to predict zebras for each x, then compute the <strong>sum of squared errors</strong>.</li>
+        <li><strong>3. Digital:</strong> Open the full dataset in a spreadsheet, add a trend line, display the equation. Compare error with your manual model.</li>
+        <li><strong>4.</strong> Which prediction is more accurate? Why?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3 : GOLD PRICE + CONSUMER PRICE (main topic) -->
+  <div class="activity-box" style="border-left-color: #d4a02b;">
+    <h2>🏅 Activity 7.3 <small>gold & consumer prices</small></h2>
+    <p><strong>“Knowledge leads to wealth”</strong> — combine gold price data with Thai consumer goods to find hidden relationships.</p>
+
+    <!-- Dataset 3 : gold sample -->
+    <div style="background: #f5f9ff; border-radius: 1.5rem; padding: 1.2rem 1.5rem; margin: 1rem 0;">
+      <p style="font-weight: 600; margin-bottom: 0.3rem;">📋 Gold price dataset (monthly, baht per gram) — sample</p>
+      <table class="data-table" style="font-size:0.85rem;">
+        <thead><tr><th>Month</th><th>Gold price (฿)</th><th>Consumer price index</th></tr></thead>
+        <tbody>
+          <tr><td>Jan 2025</td><td>32,450</td><td>108.2</td></tr>
+          <tr><td>Feb 2025</td><td>32,870</td><td>108.7</td></tr>
+          <tr><td>Mar 2025</td><td>33,200</td><td>109.4</td></tr>
+          <tr><td>Apr 2025</td><td>33,050</td><td>109.1</td></tr>
+          <tr><td>May 2025</td><td>33,890</td><td>110.3</td></tr>
+          <tr><td>Jun 2025</td><td>34,210</td><td>110.9</td></tr>
+          <tr><td>Jul 2025</td><td>34,060</td><td>111.0</td></tr>
+          <tr><td>Aug 2025</td><td>34,780</td><td>111.8</td></tr>
+          <tr><td>Sep 2025</td><td>35,100</td><td>112.4</td></tr>
+          <tr><td>Oct 2025</td><td>35,670</td><td>113.0</td></tr>
+          <tr><td>Nov 2025</td><td>36,020</td><td>113.7</td></tr>
+          <tr><td>Dec 2025</td><td>36,500</td><td>114.3</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.85rem; margin-top:0.5rem;">📌 Full dataset available at <strong>data.programming.in.th</strong> (gold & CPI).</p>
+    </div>
+
+    <div style="margin: 1.5rem 0;">
+      <p><strong>📝 Your tasks (individual work):</strong></p>
+      <ol style="padding-left: 1.8rem; line-height: 2;">
+        <li><strong>1.1</strong> Use the gold dataset (or the sample above) to create a scatter plot: <strong>Month/Date vs. Gold Price</strong>.</li>
+        <li><strong>1.2</strong> Add a trend line and display the equation. <strong>Predict the gold price for your birth month next year.</strong> Write down:
+          <ul style="list-style: disc; padding-left: 1.8rem;">
+            <li>Equation used: y = ____ x + ____</li>
+            <li>Predicted price: ฿ ________</li>
+          </ul>
+        </li>
+        <li><strong>2.1</strong> <span style="font-weight:600;">Combine</span> the gold dataset with the <strong>Thai consumer goods price dataset</strong> (from Activity 6) to create a <strong>new dataset</strong> with these attributes:
+          <br> <span class="highlight">Month</span> · <span class="highlight">Gold Price</span> · <span class="highlight">Consumer Price Index</span> · <span class="highlight">[your choice]</span>
+        </li>
+        <li><strong>2.2</strong> Find relationships between attributes. Create a scatter plot of gold price vs. CPI. <strong>What do you observe?</strong> Is there a correlation?</li>
+        <li><strong>2.3</strong> Write a short summary (3-5 sentences) on the class <strong>Padlet</strong>:
+          <ul style="list-style: disc; padding-left: 1.8rem;">
+            <li>Your predicted gold price for your birth month.</li>
+            <li>Describe the relationship you found between gold and consumer prices.</li>
+            <li>Read two classmates’ posts and give positive feedback.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+    <div style="background: #dce9f7; border-radius: 2rem; padding: 0.8rem 1.5rem; display: inline-block;">
+      💡 <strong>Hint:</strong> Use spreadsheet trendline tool → “Display equation” → predict using <strong>y = mx + c</strong>.
+    </div>
+  </div>
+
+  <!-- ERROR & SOFTWARE -->
+  <div class="section">
+    <div class="section-title"><span>🧮</span> Prediction error & tools</div>
+    <div class="grid-2col">
+      <div>
+        <p><strong>📉 Sum of squared errors (SSE)</strong><br>
+        <code>SSE = Σ (y – ŷ)²</code><br>
+        Lower SSE = better fit. Use it to compare manual vs. software models.</p>
+      </div>
+      <div>
+        <p><strong>💻 Software (spreadsheet)</strong><br>
+        • Insert scatter plot<br>
+        • Add trendline → linear<br>
+        • Check “Display equation” & “Display R²”<br>
+        • Instant predictions!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY / ASSESSMENT -->
+  <hr>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+    <div>
+      <span class="footnote">✅ Assessment: activity sheets · group observation · Padlet summary</span>
+    </div>
+    <div style="background: #0d2740; color: white; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 500;">
+      🧠 “Data + pattern = power”
+    </div>
+  </div>
+  <div style="margin-top: 2rem; background: #eef5fc; border-radius: 2rem; padding: 1.2rem 2rem; text-align: center; color: #1b4a6b;">
+    ⏳ 4 hours · 3 activities · one big prediction: <strong>you</strong> are the analyst.
+  </div>
+
+</div>
+<!-- end container -->
+</body>
+</html>
