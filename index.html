@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numerical Prediction · Lesson & Activities</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Numerical Prediction · Lesson & Activities</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+            rel="stylesheet">
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -260,296 +262,406 @@
             font-weight: 600;
         }
     </style>
-</head>
-<body>
-    <div class="container">
+    </head>
+    <body>
+        <div class="container">
 
-        <!-- HEADER -->
-        <h1>Numerical Prediction (T. Onat)</h1>
-        <div class="subhead">
-            <span class="badge">Grade 11 · Computational Science</span>
-            <span class="badge">Activity 7</span>
-            <span class="badge">100 minutes</span>
-            — predict the future with data
-        </div>
-
-        <!-- INTRO -->
-        <div class="section">
-            <div class="section-title"><span>What you'll learn</span></div>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Build models</h3>
-                    <p>Use scatter plots &amp; trend lines to find patterns in real data.</p>
-                </div>
-                <div class="card">
-                    <h3>Linear equations</h3>
-                    <p>Create <strong>y = mx + c</strong> from data and make numeric predictions.</p>
-                </div>
-                <div class="card">
-                    <h3>Measure error</h3>
-                    <p>Calculate prediction errors to know how accurate your model is.</p>
-                </div>
-                <div class="card">
-                    <h3>Why error calculation matters</h3>
-                    <p>A prediction without an error estimate is just a guess.</p>
-                </div>
-                <div class="card">
-                    <h3>Software tools</h3>
-                    <p>Use spreadsheets, Google Colab, Python, or R to automate trend lines &amp; equations.</p>
-                </div>
-                <div class="card">
-                    <h3>Instructions</h3>
-                    <p>Find your own pair and work with the data. You need to print the output and submit it.</p>
-                </div>
-                <div class="card">
-                    <h3>Answer Sheet</h3>
-                    <p> <a href="https://docs.google.com/document/d/1txAFN0hBrEcN8fKc7tzS_RHQKEeDdsa0zrTRt-UBFaE/edit?usp=sharing">Numerical Prediction Answer Sheet</a></p>
-                </div>
-                
-            </div>
-        </div>
-
-        <!-- KEY CONCEPTS -->
-        <div class="section">
-            <div class="section-title"><span>Core ideas</span></div>
-            <div class="grid-2col">
-                <div>
-                    <strong>Numerical prediction</strong> uses historical data to forecast a number: sales, price, views, etc.<br>
-                    <span class="highlight">Scatter plot</span> → <span class="highlight">trend line</span> → <span class="highlight">linear equation</span> → <span class="highlight">prediction</span>
-                </div>
-                <div>
-                    <strong>Error</strong> = actual – predicted. We use <strong>squared error</strong> so that big mistakes stand out.<br>
-                    <span class="highlight">Sum of squared errors</span> (SSE) measures overall model accuracy.
-                </div>
-            </div>
-            <div class="code-block">
-                y = m·x + c    &nbsp;|&nbsp;   m = (y₂ – y₁) / (x₂ – x₁)   &nbsp;|&nbsp;   Error² = (y – ŷ)²
-            </div>
-        </div>
-
-        <!-- ===== ACTIVITY 1 : VIEWS & LIKES ===== -->
-        <div class="activity-box">
-            <h2>Activity 7.1 <small>Number of Views</small></h2>
-            <p><strong>You are the manager of a famous music artist.</strong> Your job is to plan the next big advertising campaign, but first, you need to understand how listeners are responding to the artist's songs. You have tracked the number of views and likes on YouTube over the past 20 days. The data you collected is shown below.</p>
-
-            <table class="data-table">
-                <thead><tr><th>Day</th><th>Views (10k)</th><th>Likes (1k)</th></tr></thead>
-                <tbody>
-                    <tr><td>1</td><td>2.0</td><td>1.1</td></tr>
-                    <tr><td>2</td><td>5.3</td><td>1.4</td></tr>
-                    <tr><td>3</td><td>5.7</td><td>1.8</td></tr>
-                    <tr><td>4</td><td>6.1</td><td>1.9</td></tr>
-                    <tr><td>5</td><td>8.0</td><td>2.3</td></tr>
-                    <tr><td>6</td><td>10.3</td><td>3.4</td></tr>
-                    <tr><td>7</td><td>13.5</td><td>4.9</td></tr>
-                    <tr><td>8</td><td>16.8</td><td>5.1</td></tr>
-                    <tr><td>9</td><td>17.3</td><td>5.3</td></tr>
-                    <tr><td>10</td><td>18.1</td><td>5.7</td></tr>
-                    <tr><td>11</td><td>18.5</td><td>6.0</td></tr>
-                    <tr><td>12</td><td>18.9</td><td>6.5</td></tr>
-                    <tr><td>13</td><td>19.6</td><td>7.8</td></tr>
-                    <tr><td>14</td><td>23.4</td><td>9.1</td></tr>
-                    <tr><td>15</td><td>27.5</td><td>9.7</td></tr>
-                    <tr><td>16</td><td>28.7</td><td>10.5</td></tr>
-                    <tr><td>17</td><td>29.2</td><td>11.2</td></tr>
-                    <tr><td>18</td><td>30.3</td><td>11.9</td></tr>
-                    <tr><td>19</td><td>31.1</td><td>12.6</td></tr>
-                    <tr><td>20</td><td>38.2</td><td>15.2</td></tr>
-                </tbody>
-            </table>
-
-            <div style="margin: 1.2rem 0;">
-                <p><strong>Tasks:</strong></p>
-                <ul style="padding-left: 1.8rem;">
-                    <li><strong>1.</strong> Create a scatter plot (x = likes, y = views). Draw a trend line by eye.</li>
-                    <li><strong>2.</strong> Predict the number of likes when views = 250,000 (that's 25 in your graph).</li>
-                    <li><strong>3.</strong> Write your prediction: <em>"The approximate number of likes is ______________ thousand likes."</em></li>
-                </ul>
+            <!-- HEADER -->
+            <h1>Numerical Prediction (T. Onat)</h1>
+            <div class="subhead">
+                <span class="badge">Grade 11 · Computational Science</span>
+                <span class="badge">Activity 7</span>
+                <span class="badge">100 minutes</span>
+                — predict the future with data
             </div>
 
-            <div class="discuss-box">
-                <strong><span class="badge-discuss">Discuss</span> with your class</strong>
-                <ul>
-                    <li><strong>Why do you think there's an unusually high increase in views and likes on some days?</strong> (Consider weekends, promotions, viral moments, or external events.)</li>
-                    <li><strong>Compare your trend line with another pair.</strong> Did everyone draw the same line? Why or why not?</li>
-                    <li><strong>If you were the artist's manager, how would you use this prediction?</strong> What decisions would it help you make?</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- ===== ACTIVITY 2 : WILD CATTLE & ZEBRAS ===== -->
-        <div class="activity-box" style="border-left-color: #b9873a;">
-            <h2>Activity 7.2 <small>Whose Prediction is Accurate?</small></h2>
-
-            <div style="background: #f5f9ff; border-radius: 1.5rem; padding: 1rem 1.5rem; margin: 1rem 0;">
-                <p style="font-style: italic; color: #1a3d5e;">
-                    <strong>Did you know?</strong> Ecologists use data to understand how different animal species interact with each other. In 2006, researchers H. Fay and Johanna C. Greeff published a study in the journal <em>Ecological Modelling</em> that looked at relationships between species in the wild. Today, you will step into the role of an ecologist. Using a dataset similar to theirs—wild cattle and zebras—you will practice making predictions and finding correlations. You can use either Python or R to analyze the data. Which tool will you choose?
-                </p>
-            </div>
-
-            <p><strong>Instructions:</strong> Use the wild cattle and zebra datasets (download from <strong>data.programming.in.th</strong>) to create trend line equations and calculate errors using spreadsheet software, Python, or R.</p>
-
-            <h3 style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part A: Manual Calculation</h3>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
-                <div style="background: #f8fbff; padding: 1rem; border-radius: 1rem; border: 1px solid #dde6f0;">
-                    <p><strong>Point 1</strong></p>
-                    <p>x₁ = ________ &nbsp;&nbsp; y₁ = ________</p>
-                </div>
-                <div style="background: #f8fbff; padding: 1rem; border-radius: 1rem; border: 1px solid #dde6f0;">
-                    <p><strong>Point 2</strong></p>
-                    <p>x₂ = ________ &nbsp;&nbsp; y₂ = ________</p>
-                </div>
-            </div>
-
-            <div style="background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;">
-                <p><strong>Find the slope (m):</strong></p>
-                <div class="code-block" style="font-size: 1rem; padding: 0.8rem 1.2rem;">
-                    m = (y₂ – y₁) / (x₂ – x₁) = ________
-                </div>
-                <p><strong>Find the y-intercept (c):</strong></p>
-                <div class="code-block" style="font-size: 1rem; padding: 0.8rem 1.2rem;">
-                    (y – y₁) = m(x – x₁) &nbsp;&nbsp;→&nbsp;&nbsp; y = mx + c
-                </div>
-                <p><strong>Your equation:</strong></p>
-                <div class="code-block" style="font-size: 1rem; padding: 0.8rem 1.2rem;">
-                    Number of zebras = (________ × number of wild cattle) + ________
-                </div>
-            </div>
-
-            <div style="margin: 1.2rem 0;">
-                <p><strong>From this linear equation, explain what it means:</strong></p>
-                <div style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; min-height: 80px;">
-                    ________________________________________________________________________<br>
-                    ________________________________________________________________________<br>
-                    ________________________________________________________________________
-                </div>
-            </div>
-
-            <h3 style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part B: Error Calculation</h3>
-
-            <p><strong>Given trend line equation:</strong> ŷ = 0.76x + 44.2</p>
-            <p style="font-size: 0.9rem; color: #38658b;">Use this equation to calculate the predicted zebra value (ŷ) and the squared error (y – ŷ)² for each row.</p>
-
-            <table class="data-table error-table">
-                <thead>
-                    <tr>
-                        <th>Wild Cattle (x)</th>
-                        <th>Zebra (y)</th>
-                        <th>ŷ = 0.76x + 44.2</th>
-                        <th>Error² (y – ŷ)²</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>118</td><td>124</td><td>133.88</td><td>97.61</td></tr>
-                    <tr><td>106</td><td>105</td><td>124.76</td><td>390.46</td></tr>
-                    <tr><td>79.31</td><td>75.23</td><td></td><td></td></tr>
-                    <tr><td>67.45</td><td>78.5</td><td></td><td></td></tr>
-                    <tr><td>57.83</td><td>76.16</td><td></td><td></td></tr>
-                    <tr><td>50.66</td><td>76.49</td><td></td><td></td></tr>
-                    <tr><td>51.41</td><td>83.16</td><td></td><td></td></tr>
-                    <tr><td>55.02</td><td>85.11</td><td></td><td></td></tr>
-                    <tr><td>58.16</td><td>88.77</td><td></td><td></td></tr>
-                    <tr><td>65.12</td><td>108.34</td><td></td><td></td></tr>
-                    <tr><td>81.27</td><td>116.03</td><td></td><td></td></tr>
-                    <tr><td>75.84</td><td>98.07</td><td></td><td></td></tr>
-                    <tr><td>80.62</td><td>128.3</td><td></td><td></td></tr>
-                    <tr><td>86.34</td><td>118.22</td><td></td><td></td></tr>
-                    <tr><td>94.06</td><td>125.2</td><td></td><td></td></tr>
-                    <tr><td>99.15</td><td>130.97</td><td></td><td></td></tr>
-                    <tr><td>96.5</td><td>124.31</td><td></td><td></td></tr>
-                    <tr><td>95.47</td><td>130.08</td><td></td><td></td></tr>
-                    <tr><td>98.07</td><td>121.76</td><td></td><td></td></tr>
-                    <tr><td>97.88</td><td>132.4</td><td></td><td></td></tr>
-                    <tr><td>105.74</td><td>120.6</td><td></td><td></td></tr>
-                    <tr><td>106.58</td><td>135.77</td><td></td><td></td></tr>
-                    <tr><td>112.43</td><td>130.04</td><td>129.65</td><td>0.15</td></tr>
-                    <tr style="background: #e6effa; font-weight: 600;">
-                        <td colspan="3" style="text-align: right;">Sum of Squared Errors (SSE) =</td>
-                        <td>3507.90</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div style="margin: 1.2rem 0; background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem;">
-                <p><strong>Note:</strong> ŷ = the value obtained by substituting x into the trend line equation.</p>
-                <p><strong>Complete the error calculation for all rows.</strong> The first and last rows are done for you as examples.</p>
-            </div>
-
-            <h3 style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part C: Digital Analysis</h3>
-
-            <p><strong>Use the dataset to create a trend line equation either with software or by writing a program:</strong></p>
-            <div style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; margin: 1rem 0;">
-                <p><strong>The resulting equation is:</strong> ______________________________________________</p>
-            </div>
-
-            <div style="background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;">
-                <p><strong>Predict:</strong> Suppose there are a number of wild cattle __________. It can be said that there are __________ zebras.</p>
-                <div style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; min-height: 50px;">
-                    ________________________________________________________________________
-                </div>
-            </div>
-
-            <div class="discuss-box">
-                <strong><span class="badge-discuss">Discuss</span> with your class</strong>
-                <ul>
-                    <li><strong>Which method (manual or software) was more accurate?</strong> Why do you think that is?</li>
-                    <li><strong>Why does the sum of squared errors matter?</strong> How does it help us choose a better model?</li>
-                    <li><strong>If you were a park ranger, how would you use this zebra-cattle relationship?</strong> What decisions could it inform?</li>
-                    <li><strong>Python or R?</strong> Which tool did you choose and why? What were the advantages?</li>
-                </ul>
-            </div>
-
-            <div style="margin-top: 1.5rem; padding: 1rem; background: #eaf3fe; border-radius: 1rem; text-align: center; font-size: 0.9rem;">
-                📌 Full dataset available at: <strong>data.programming.in.th</strong> &nbsp;|&nbsp; Data source: H. Fay, Johanna C. Greeff, <em>Ecological Modelling</em> 196 (2006) 237–244
-            </div>
-        </div>
-
-        <!-- ERROR & TOOLS SUMMARY -->
-        <div class="section">
-            <div class="section-title"><span>Prediction error & tools</span></div>
-            <div class="grid-2col">
-                <div>
-                    <p><strong>Sum of squared errors (SSE)</strong></p>
-                    <div class="code-block" style="font-size: 1rem; padding: 0.8rem 1.2rem;">
-                        SSE = Σ (y – ŷ)²
+            <!-- INTRO -->
+            <div class="section">
+                <div class="section-title"><span>What you'll learn</span></div>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Build models</h3>
+                        <p>Use scatter plots &amp; trend lines to find patterns
+                            in real data.</p>
                     </div>
-                    <p>Lower SSE = better fit. Use it to compare manual vs. software models.</p>
+                    <div class="card">
+                        <h3>Linear equations</h3>
+                        <p>Create <strong>y = mx + c</strong> from data and make
+                            numeric predictions.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Measure error</h3>
+                        <p>Calculate prediction errors to know how accurate your
+                            model is.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Why error calculation matters</h3>
+                        <p>A prediction without an error estimate is just a
+                            guess.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Software tools</h3>
+                        <p>Use spreadsheets, Google Colab, Python, or R to
+                            automate trend lines &amp; equations.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Instructions</h3>
+                        <p>Find your own pair and work with the data. You need
+                            to print the output and submit it.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Answer Sheet</h3>
+                        <p> <a
+                                href="https://docs.google.com/document/d/1txAFN0hBrEcN8fKc7tzS_RHQKEeDdsa0zrTRt-UBFaE/edit?usp=sharing">Numerical
+                                Prediction Answer Sheet</a></p>
+                    </div>
+
                 </div>
-                <div>
-                    <p><strong>Software options</strong></p>
+            </div>
+
+            <!-- KEY CONCEPTS -->
+            <div class="section">
+                <div class="section-title"><span>Core ideas</span></div>
+                <div class="grid-2col">
+                    <div>
+                        <strong>Numerical prediction</strong> uses historical
+                        data to forecast a number: sales, price, views, etc.<br>
+                        <span class="highlight">Scatter plot</span> → <span
+                            class="highlight">trend line</span> → <span
+                            class="highlight">linear equation</span> → <span
+                            class="highlight">prediction</span>
+                    </div>
+                    <div>
+                        <strong>Error</strong> = actual – predicted. We use
+                        <strong>squared error</strong> so that big mistakes
+                        stand out.<br>
+                        <span class="highlight">Sum of squared errors</span>
+                        (SSE) measures overall model accuracy.
+                    </div>
+                </div>
+                <div class="code-block">
+                    y = m·x + c &nbsp;|&nbsp; m = (y₂ – y₁) / (x₂ – x₁)
+                    &nbsp;|&nbsp; Error² = (y – ŷ)²
+                </div>
+            </div>
+
+            <!-- ===== ACTIVITY 1 : VIEWS & LIKES ===== -->
+            <div class="activity-box">
+                <h2>Activity 7.1 <small>Number of Views</small></h2>
+                <p><strong>You are the manager of a famous music
+                        artist.</strong> Your job is to plan the next big
+                    advertising campaign, but first, you need to understand how
+                    listeners are responding to the artist's songs. You have
+                    tracked the number of views and likes on YouTube over the
+                    past 20 days. The data you collected is shown below.</p>
+
+                <table class="data-table">
+                    <thead><tr><th>Day</th><th>Views (10k)</th><th>Likes
+                                (1k)</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>2.0</td><td>1.1</td></tr>
+                        <tr><td>2</td><td>5.3</td><td>1.4</td></tr>
+                        <tr><td>3</td><td>5.7</td><td>1.8</td></tr>
+                        <tr><td>4</td><td>6.1</td><td>1.9</td></tr>
+                        <tr><td>5</td><td>8.0</td><td>2.3</td></tr>
+                        <tr><td>6</td><td>10.3</td><td>3.4</td></tr>
+                        <tr><td>7</td><td>13.5</td><td>4.9</td></tr>
+                        <tr><td>8</td><td>16.8</td><td>5.1</td></tr>
+                        <tr><td>9</td><td>17.3</td><td>5.3</td></tr>
+                        <tr><td>10</td><td>18.1</td><td>5.7</td></tr>
+                        <tr><td>11</td><td>18.5</td><td>6.0</td></tr>
+                        <tr><td>12</td><td>18.9</td><td>6.5</td></tr>
+                        <tr><td>13</td><td>19.6</td><td>7.8</td></tr>
+                        <tr><td>14</td><td>23.4</td><td>9.1</td></tr>
+                        <tr><td>15</td><td>27.5</td><td>9.7</td></tr>
+                        <tr><td>16</td><td>28.7</td><td>10.5</td></tr>
+                        <tr><td>17</td><td>29.2</td><td>11.2</td></tr>
+                        <tr><td>18</td><td>30.3</td><td>11.9</td></tr>
+                        <tr><td>19</td><td>31.1</td><td>12.6</td></tr>
+                        <tr><td>20</td><td>38.2</td><td>15.2</td></tr>
+                    </tbody>
+                </table>
+
+                <div style="margin: 1.2rem 0;">
+                    <p><strong>Tasks:</strong></p>
                     <ul style="padding-left: 1.8rem;">
-                        <li><strong>Spreadsheet:</strong> Insert scatter plot → Add trendline → Display equation</li>
-                        <li><strong>Python:</strong> Use libraries like <code>numpy</code> and <code>scipy</code></li>
-                        <li><strong>R:</strong> Use <code>lm()</code> function for linear models</li>
+                        <li><strong>1.</strong> Create a scatter plot (x =
+                            likes, y = views). Draw a trend line by eye.</li>
+                        <li><strong>2.</strong> Predict the number of likes when
+                            views = 250,000 (that's 25 in your graph).</li>
+                        <li><strong>3.</strong> Write your prediction:
+                            <em>"The approximate number of likes is ______________ thousand likes."</em></li>
+                    </ul>
+                </div>
+
+                <div class="discuss-box">
+                    <strong><span class="badge-discuss">Discuss</span> with your
+                        class</strong>
+                    <ul>
+                        <li><strong>Why do you think there's an unusually high
+                                increase in views and likes on some
+                                days?</strong> (Consider weekends, promotions,
+                            viral moments, or external events.)</li>
+                        <li><strong>Compare your trend line with another
+                                pair.</strong> Did everyone draw the same line?
+                            Why or why not?</li>
+                        <li><strong>If you were the artist's manager, how would
+                                you use this prediction?</strong> What decisions
+                            would it help you make?</li>
                     </ul>
                 </div>
             </div>
-            <div class="discuss-box" style="margin-top: 1rem;">
-                <strong><span class="badge-discuss">Discuss</span> with your class</strong>
-                <ul>
-                    <li><strong>When would you prefer a manual calculation over software?</strong> When would software be essential?</li>
-                    <li><strong>What does a high error tell you about your model?</strong> Should you always trust the trend line?</li>
-                    <li><strong>If your prediction error is large, what could you do to improve it?</strong></li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- SUMMARY / ASSESSMENT -->
-        <hr>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-            <div>
-                <span class="footnote">Assessment: activity sheets · group observation · discussion participation</span>
-            </div>
-            <div style="background: #0d2740; color: white; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 500;">
-                Data + pattern = power
-            </div>
-        </div>
-        <div style="margin-top: 2rem; background: #eef5fc; border-radius: 2rem; padding: 1.2rem 2rem; text-align: center; color: #1b4a6b;">
-            4 hours · 2 activities · one big prediction: <strong>you</strong> are the analyst.
-        </div>
+            <!-- ===== ACTIVITY 2 : WILD CATTLE & ZEBRAS ===== -->
+            <div class="activity-box" style="border-left-color: #b9873a;">
+                <h2>Activity 7.2 <small>Whose Prediction is
+                        Accurate?</small></h2>
 
-    </div>
-    <!-- end container -->
-</body>
+                <div
+                    style="background: #f5f9ff; border-radius: 1.5rem; padding: 1rem 1.5rem; margin: 1rem 0;">
+                    <p style="font-style: italic; color: #1a3d5e;">
+                        <strong>Did you know?</strong> Ecologists use data to
+                        understand how different animal species interact with
+                        each other. In 2006, researchers H. Fay and Johanna C.
+                        Greeff published a study in the journal <em>Ecological
+                            Modelling</em> that looked at relationships between
+                        species in the wild. Today, you will step into the role
+                        of an ecologist. Using a dataset similar to theirs—wild
+                        cattle and zebras—you will practice making predictions
+                        and finding correlations. You can use either Python or R
+                        to analyze the data. Which tool will you choose?
+                    </p>
+                </div>
+
+                <p><strong>Instructions:</strong> Use the wild cattle and zebra
+                    datasets (download from
+                    <strong>data.programming.in.th</strong>) to create trend
+                    line equations and calculate errors using spreadsheet
+                    software, Python, or R.</p>
+
+                <h3
+                    style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part
+                    A: Manual Calculation</h3>
+
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
+                    <div
+                        style="background: #f8fbff; padding: 1rem; border-radius: 1rem; border: 1px solid #dde6f0;">
+                        <p><strong>Point 1</strong></p>
+                        <p>x₁ = ________ &nbsp;&nbsp; y₁ = ________</p>
+                    </div>
+                    <div
+                        style="background: #f8fbff; padding: 1rem; border-radius: 1rem; border: 1px solid #dde6f0;">
+                        <p><strong>Point 2</strong></p>
+                        <p>x₂ = ________ &nbsp;&nbsp; y₂ = ________</p>
+                    </div>
+                </div>
+
+                <div
+                    style="background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;">
+                    <p><strong>Find the slope (m):</strong></p>
+                    <div class="code-block"
+                        style="font-size: 1rem; padding: 0.8rem 1.2rem;">
+                        m = (y₂ – y₁) / (x₂ – x₁) = ________
+                    </div>
+                    <p><strong>Find the y-intercept (c):</strong></p>
+                    <div class="code-block"
+                        style="font-size: 1rem; padding: 0.8rem 1.2rem;">
+                        (y – y₁) = m(x – x₁) &nbsp;&nbsp;→&nbsp;&nbsp; y = mx +
+                        c
+                    </div>
+                    <p><strong>Your equation:</strong></p>
+                    <div class="code-block"
+                        style="font-size: 1rem; padding: 0.8rem 1.2rem;">
+                        Number of zebras = (________ × number of wild cattle) +
+                        ________
+                    </div>
+                </div>
+
+                <div style="margin: 1.2rem 0;">
+                    <p><strong>From this linear equation, explain what it
+                            means:</strong></p>
+                    <div
+                        style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; min-height: 80px;">
+                        ________________________________________________________________________<br>
+                        ________________________________________________________________________<br>
+                        ________________________________________________________________________
+                    </div>
+                </div>
+
+                <h3
+                    style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part
+                    B: Error Calculation</h3>
+
+                <p><strong>Given trend line equation:</strong> ŷ = 0.76x +
+                    44.2</p>
+                <p style="font-size: 0.9rem; color: #38658b;">Use this equation
+                    to calculate the predicted zebra value (ŷ) and the squared
+                    error (y – ŷ)² for each row.</p>
+
+                <table class="data-table error-table">
+                    <thead>
+                        <tr>
+                            <th>Wild Cattle (x)</th>
+                            <th>Zebra (y)</th>
+                            <th>ŷ = 0.76x + 44.2</th>
+                            <th style="color: #38658b;">Error² (y – ŷ)²</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>118</td><td>124</td><td>133.88</td><td>97.61</td></tr>
+                        <tr><td>106</td><td>105</td><td>124.76</td><td>390.46</td></tr>
+                        <tr><td>79.31</td><td>75.23</td><td></td><td></td></tr>
+                        <tr><td>67.45</td><td>78.5</td><td></td><td></td></tr>
+                        <tr><td>57.83</td><td>76.16</td><td></td><td></td></tr>
+                        <tr><td>50.66</td><td>76.49</td><td></td><td></td></tr>
+                        <tr><td>51.41</td><td>83.16</td><td></td><td></td></tr>
+                        <tr><td>55.02</td><td>85.11</td><td></td><td></td></tr>
+                        <tr><td>58.16</td><td>88.77</td><td></td><td></td></tr>
+                        <tr><td>65.12</td><td>108.34</td><td></td><td></td></tr>
+                        <tr><td>81.27</td><td>116.03</td><td></td><td></td></tr>
+                        <tr><td>75.84</td><td>98.07</td><td></td><td></td></tr>
+                        <tr><td>80.62</td><td>128.3</td><td></td><td></td></tr>
+                        <tr><td>86.34</td><td>118.22</td><td></td><td></td></tr>
+                        <tr><td>94.06</td><td>125.2</td><td></td><td></td></tr>
+                        <tr><td>99.15</td><td>130.97</td><td></td><td></td></tr>
+                        <tr><td>96.5</td><td>124.31</td><td></td><td></td></tr>
+                        <tr><td>95.47</td><td>130.08</td><td></td><td></td></tr>
+                        <tr><td>98.07</td><td>121.76</td><td></td><td></td></tr>
+                        <tr><td>97.88</td><td>132.4</td><td></td><td></td></tr>
+                        <tr><td>105.74</td><td>120.6</td><td></td><td></td></tr>
+                        <tr><td>106.58</td><td>135.77</td><td></td><td></td></tr>
+                        <tr><td>112.43</td><td>130.04</td><td>129.65</td><td>0.15</td></tr>
+                        <tr style="background: #e6effa; font-weight: 600;">
+                            <td colspan="3" style="text-align: right;">Sum of
+                                Squared Errors (SSE) =</td>
+                            <td>3507.90</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div
+                    style="margin: 1.2rem 0; background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem;">
+                    <p><strong>Note:</strong> ŷ = the value obtained by
+                        substituting x into the trend line equation.</p>
+                    <p><strong>Complete the error calculation for all
+                            rows.</strong> The first and last rows are done for
+                        you as examples.</p>
+                </div>
+
+                <h3
+                    style="margin-top: 1.5rem; font-weight: 600; color: #1a3d5e;">Part
+                    C: Digital Analysis</h3>
+
+                <p><strong>Use the dataset to create a trend line equation
+                        either with software or by writing a
+                        program:</strong></p>
+                <div
+                    style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; margin: 1rem 0;">
+                    <p><strong>The resulting equation is:</strong>
+                        ______________________________________________</p>
+                </div>
+
+                <div
+                    style="background: #f0f6fe; padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;">
+                    <p><strong>Predict:</strong> Suppose there are a number of
+                        wild cattle __________. It can be said that there are
+                        __________ zebras.</p>
+                    <div
+                        style="background: #f8fbff; border: 1px dashed #b3cce5; border-radius: 1rem; padding: 1rem; min-height: 50px;">
+                        ________________________________________________________________________
+                    </div>
+                </div>
+
+                <div class="discuss-box">
+                    <strong><span class="badge-discuss">Discuss</span> with your
+                        class</strong>
+                    <ul>
+                        <li><strong>Which method (manual or software) was more
+                                accurate?</strong> Why do you think that
+                            is?</li>
+                        <li><strong>Why does the sum of squared errors
+                                matter?</strong> How does it help us choose a
+                            better model?</li>
+                        <li><strong>If you were a park ranger, how would you use
+                                this zebra-cattle relationship?</strong> What
+                            decisions could it inform?</li>
+                        <li><strong>Python or R?</strong> Which tool did you
+                            choose and why? What were the advantages?</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="margin-top: 1.5rem; padding: 1rem; background: #eaf3fe; border-radius: 1rem; text-align: center; font-size: 0.9rem;">
+                    📌 Full dataset available at:
+                    <strong>data.programming.in.th</strong> &nbsp;|&nbsp; Data
+                    source: H. Fay, Johanna C. Greeff, <em>Ecological
+                        Modelling</em> 196 (2006) 237–244
+                </div>
+            </div>
+
+            <!-- ERROR & TOOLS SUMMARY -->
+            <div class="section">
+                <div class="section-title"><span>Prediction error &
+                        tools</span></div>
+                <div class="grid-2col">
+                    <div>
+                        <p><strong>Sum of squared errors (SSE)</strong></p>
+                        <div class="code-block"
+                            style="font-size: 1rem; padding: 0.8rem 1.2rem;">
+                            SSE = Σ (y – ŷ)²
+                        </div>
+                        <p>Lower SSE = better fit. Use it to compare manual vs.
+                            software models.</p>
+                    </div>
+                    <div>
+                        <p><strong>Software options</strong></p>
+                        <ul style="padding-left: 1.8rem;">
+                            <li><strong>Spreadsheet:</strong> Insert scatter
+                                plot → Add trendline → Display equation</li>
+                            <li><strong>Python:</strong> Use libraries like
+                                <code>numpy</code> and <code>scipy</code></li>
+                            <li><strong>R:</strong> Use <code>lm()</code>
+                                function for linear models</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="discuss-box" style="margin-top: 1rem;">
+                    <strong><span class="badge-discuss">Discuss</span> with your
+                        class</strong>
+                    <ul>
+                        <li><strong>When would you prefer a manual calculation
+                                over software?</strong> When would software be
+                            essential?</li>
+                        <li><strong>What does a high error tell you about your
+                                model?</strong> Should you always trust the
+                            trend line?</li>
+                        <li><strong>If your prediction error is large, what
+                                could you do to improve it?</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SUMMARY / ASSESSMENT -->
+            <hr>
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <div>
+                    <span class="footnote">Assessment: activity sheets · group
+                        observation · discussion participation</span>
+                </div>
+                <div
+                    style="background: #0d2740; color: white; padding: 0.6rem 1.8rem; border-radius: 60px; font-weight: 500;">
+                    Data + pattern = power
+                </div>
+            </div>
+            <div
+                style="margin-top: 2rem; background: #eef5fc; border-radius: 2rem; padding: 1.2rem 2rem; text-align: center; color: #1b4a6b;">
+                4 hours · 2 activities · one big prediction:
+                <strong>you</strong> are the analyst.
+            </div>
+
+        </div>
+        <!-- end container -->
+    </body>
 </html>
